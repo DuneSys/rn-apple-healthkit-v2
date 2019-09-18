@@ -1,13 +1,13 @@
 
 # React Native Apple Healthkit
-A React Native bridge module for interacting with Apple Healthkit data. Checkout the [full documentation](https://github.com/terrillo/rn-apple-healthkit/tree/master/docs)
+A React Native bridge module for interacting with Apple Healthkit data. Checkout the [full documentation](https://github.com/terrillo/rn-apple-healthkit-v2/tree/master/docs)
 
 ## Installation
 
-Install the [rn-apple-healthkit] package from npm:
+Install the [rn-apple-healthkit-v2] package from npm:
 
-- Run `npm install rn-apple-healthkit --save`
-- Run `react-native link rn-apple-healthkit`
+- Run `npm install rn-apple-healthkit-v2 --save`
+- Run `react-native link rn-apple-healthkit-v2`
 
 Update `info.plist` in your React Native project
 ```
@@ -19,9 +19,9 @@ Update `info.plist` in your React Native project
 
 ## Manual Installation
 
-1. Run `npm install rn-apple-healthkit --save`
+1. Run `npm install rn-apple-healthkit-v2 --save`
 2. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-3. Go to `node_modules` ➜ `rn-apple-healthkit` and add `RCTAppleHealthkit.xcodeproj`
+3. Go to `node_modules` ➜ `rn-apple-healthkit-v2` and add `RCTAppleHealthkit.xcodeproj`
 4. In XCode, in the project navigator, select your project. Add `libRCTAppleHealthkit.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 5. Click `RCTAppleHealthkit.xcodeproj` in the project navigator and go the `Build Settings` tab. Make sure 'All' is toggled on (instead of 'Basic'). In the `Search Paths` section, look for `Header Search Paths` and make sure it contains both `$(SRCROOT)/../../react-native/React` and `$(SRCROOT)/../../../React` - mark both as `recursive`.
 6. Enable Healthkit in your application's `Capabilities`
@@ -50,7 +50,7 @@ let options = {
 ```
 
 ```javascript
-import AppleHealthKit from 'rn-apple-healthkit';
+import AppleHealthKit from 'rn-apple-healthkit-v2';
 
 AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => {
     if (err) {
@@ -78,13 +78,13 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
 
 ## Changelog
 0.6.5v
-- Enable fetching basal energy [#23](https://github.com/terrillo/rn-apple-healthkit/pull/23)
-- remove checkPermission functions in order to use from PR [#69](https://github.com/terrillo/rn-apple-healthkit/pull/69)
-- Added correct link to permissions. [#73](https://github.com/terrillo/rn-apple-healthkit/pull/73)
-- Add unified way to get workouts + convert Activity Types to name + isTracked flag [#25](https://github.com/terrillo/rn-apple-healthkit/pull/25)
+- Enable fetching basal energy [#23](https://github.com/terrillo/rn-apple-healthkit-v2/pull/23)
+- remove checkPermission functions in order to use from PR [#69](https://github.com/terrillo/rn-apple-healthkit-v2/pull/69)
+- Added correct link to permissions. [#73](https://github.com/terrillo/rn-apple-healthkit-v2/pull/73)
+- Add unified way to get workouts + convert Activity Types to name + isTracked flag [#25](https://github.com/terrillo/rn-apple-healthkit-v2/pull/25)
 
 0.6.4v
-- Basal energy ([#23](https://github.com/terrillo/rn-apple-healthkit/pull/23))
+- Basal energy ([#23](https://github.com/terrillo/rn-apple-healthkit-v2/pull/23))
 - Fixed issues with saving weight in the past
 - Commited the docs to increase pull request support
 - Add daily samples for:
@@ -93,7 +93,7 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
   - Cycling Distance
 
 0.6.3v
-- Food and Water ([#19](https://github.com/terrillo/rn-apple-healthkit/pull/19))
+- Food and Water ([#19](https://github.com/terrillo/rn-apple-healthkit-v2/pull/19))
 
 0.6.1v
 - HKQuantityTypeIdentifierActiveEnergyBurned
@@ -179,10 +179,10 @@ The available Healthkit permissions to use with `initHealthKit`
 | Weight                 | [HKQuantityTypeIdentifierBodyMass](https://developer.apple.com/reference/Healthkit/hkquantitytypeidentifierbodymass?language=objc)                                 | ✓    | ✓     |
 | BodyFatPercentage      | [HKQuantityTypeIdentifierBodyFatPercentage](https://developer.apple.com/reference/Healthkit/hkquantitytypeidentifierbodyfatpercentage?language=objc)                                 | ✓    | ✓     |
 
-These permissions are exported as constants of the `rn-apple-healthkit` module.
+These permissions are exported as constants of the `rn-apple-healthkit-v2` module.
 
 ```javascript
-import AppleHealthKit from 'rn-apple-healthkit';
+import AppleHealthKit from 'rn-apple-healthkit-v2';
 
 // get the available permissions from AppleHealthKit.Constants object
 const PERMS = AppleHealthKit.Constants.Permissions;
