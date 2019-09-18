@@ -1,7 +1,7 @@
 //
 //  RCTAppleHealthKit.m
 //  RCTAppleHealthKit
-//
+//  Created by Greg Wilson on 2016-06-26.
 //  Created by Greg Wilson on 2016-06-26.
 //  This source code is licensed under the MIT-style license found in the
 //  LICENSE file in the root directory of this source tree.
@@ -22,13 +22,38 @@
 
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventDispatcher.h>
+#import <React/RCTEventEmitter.h>
 
 @implementation RCTAppleHealthKit
 
 @synthesize bridge = _bridge;
 
 RCT_EXPORT_MODULE();
-
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"healthkitValueAddedHandler"];
+}
+- (void)startObserving
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(emitEventInternal:)
+                                                 name:@"event-emitted"
+                                               object:nil];
+}
+- (void)stopObserving
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)emitEventInternal:(NSNotification *)notification
+{
+    [self sendEventWithName:@"healthkitValueAddedHandler"
+                       body:@""];
+}
++ (void)emitEventWithName:(NSString *)name andPayload:(NSDictionary *)payload
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"event-emitted"
+                                                        object:self
+                                                      userInfo:payload];
+}
 RCT_EXPORT_METHOD(isAvailable:(RCTResponseSenderBlock)callback)
 {
     [self isHealthKitAvailable:callback];
